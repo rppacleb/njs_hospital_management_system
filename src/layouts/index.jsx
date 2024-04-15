@@ -5,7 +5,7 @@ import useLayoutStyles from "./useLayoutStyles";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Layout = ({ children }) => {
+const Layout = ({ children, __LOCALSESSION }) => {
   const style = useLayoutStyles();
 
   return (

@@ -8,22 +8,29 @@ import Layout from "@src/layouts/index";
 import Theme from "@src/components/Theme/index";
 import "@styles/main.css";
 import Maintenance from "@src/layouts/Maintenance";
+import { cookie } from "@src/utils/cache/cookie";
+
+const __LOCALSESSION = cookie.get();
 
 // Default App
 const DEFApp = ({ Component, pageProps, data }) => {
   const store = useStore(pageProps?.initialReduxState);
-  const incompleteRqrmnts = false; //@DESC: Here is a function that check the data if requirements are valid.
+  const isMaintenance = false;
 
   return (
     <Provider store={store}>
-      {incompleteRqrmnts ? (
+      {isMaintenance ? (
         <Maintenance />
       ) : (
         <Theme>
-          <Heads settings={{}} />
           <NextNProgress color="#fff" />
-          <Layout>
-            <Component {...pageProps} data={data} />
+          <Heads />
+          <Layout __LOCALSESSION={__LOCALSESSION}>
+            <Component
+              {...pageProps}
+              data={data}
+              __LOCALSESSION={__LOCALSESSION}
+            />
           </Layout>
         </Theme>
       )}

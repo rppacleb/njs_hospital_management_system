@@ -5,7 +5,7 @@ import { Swiper } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import DefaultNavigation from "./DefaultNavigation";
 import DefaultPagination from "./DefaultPagination";
-import { isNotNull } from "@src/utils/common";
+import { isNull } from "@src/utils/common";
 
 const CoreSwiper = ({
   length,
@@ -48,7 +48,7 @@ const CoreSwiper = ({
   return (
     <Box position="relative">
       {navigation.show &&
-        (isNotNull(navigation.custom) ? (
+        (!isNull(navigation.custom) ? (
           navigation.custom()
         ) : (
           <DefaultNavigation
@@ -70,7 +70,7 @@ const CoreSwiper = ({
       </Swiper>
 
       {pagination.show &&
-        (isNotNull(pagination.custom) ? (
+        (!isNull(pagination.custom) ? (
           pagination.custom()
         ) : (
           <DefaultPagination

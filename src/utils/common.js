@@ -2,8 +2,12 @@ import { rqx } from "@src/api";
 import { LINK_ACTIONS } from "./enum";
 import { isValidString } from "./string";
 
-export const isNotNull = (value) => {
-  return value != null;
+export const isNull = (value) => {
+  return value === null;
+};
+
+export const isUndefined = (value) => {
+  return value === undefined;
 };
 
 export const htmlParser = (html = "", isLoggedIn = false) => {

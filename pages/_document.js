@@ -8,7 +8,7 @@ export default function Document() {
   return (
     <Html lang={APP_LOCALE} version={APP_VERSION}>
       <Head>
-        <link rel="icon" href="favicon.png" />
+        {/* <link rel="icon" href="favicon.png" /> */}
         <meta name={APP_META.NAME} content={APP_META.DESCRIPTION} />
         <meta name="theme-color" content={APP_COLORS.THEME} />
         <meta name="application-name" content={APP_NAME} />

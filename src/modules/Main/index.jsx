@@ -3,12 +3,40 @@ import { redirect } from "@src/utils/common";
 import { useRouter } from "next/router";
 import { SwiperSlide } from "swiper/react";
 import CoreSwiper from "@src/components/DataDisplay/Swiper";
+import { __LOCALDB } from "@src/utils/database";
+import { useState } from "react";
 
-const Main = ({ data }) => {
+const Main = ({ datas }) => {
   const router = useRouter();
   const theme = useTheme();
   const { palette } = theme;
   const isSM = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const [data, setData] = useState(null);
+
+  const handleAddData = () => {
+    __LOCALDB.create("tbl_users", { name: "John Doe", age: 30 }).then(() => {
+      console.log("Data added successfully");
+    });
+  };
+
+  const handleGetData = () => {
+    __LOCALDB.read(1).then((result) => {
+      setData(result);
+    });
+  };
+
+  const handleUpdateData = () => {
+    __LOCALDB.update(1, { name: "Jane Doe", age: 35 }).then(() => {
+      console.log("Data updated successfully");
+    });
+  };
+
+  const handleDeleteData = () => {
+    __LOCALDB.delete(4).then(() => {
+      console.log("Data deleted successfully");
+    });
+  };
 
   const redirectHandler = (action, url) => {
     if (action !== "_blank" && action !== "popup") return router.push(url);
@@ -22,69 +50,11 @@ const Main = ({ data }) => {
         disableGutters
         sx={{ py: { sm: "96px", xxs: "48px" } }}
       >
-        <CoreSwiper
-          // loop={true}
-          slidesPerView={1}
-          spaceBetween={30}
-          freeMode={true}
-          autoplay={{ delay: 0.5, disableOnInteraction: false }}
-          speed={5000}
-          length={3}
-          navigation={{
-            show: false,
-            justify: "end",
-            title: { header: "This is a title" },
-            gap: "16px",
-            thumb: { palette: { active: palette.primary.light } },
-            layout: {
-              type: "layered",
-              props: { top: 5 },
-            },
-          }}
-          pagination={{
-            show: true,
-            justify: "end",
-            thumb: { palette: { active: "#fff" } },
-            layout: {
-              type: "!layered",
-              props: { bottom: 0 },
-            },
-          }}
-        >
-          <SwiperSlide>
-            <Box
-              height={120}
-              bgcolor={palette.primary.light}
-              color={palette.primary.dark}
-              borderRadius={3}
-              p={2}
-            >
-              3
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              height={120}
-              bgcolor={palette.primary.light}
-              color={palette.primary.dark}
-              borderRadius={3}
-              p={2}
-            >
-              3
-            </Box>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Box
-              height={120}
-              bgcolor={palette.primary.light}
-              color={palette.primary.dark}
-              borderRadius={3}
-              p={2}
-            >
-              3
-            </Box>
-          </SwiperSlide>
-        </CoreSwiper>
+        <button onClick={handleAddData}>Add Data</button>
+        <button onClick={handleGetData}>Get Data</button>
+        <button onClick={handleUpdateData}>Update Data</button>
+        <button onClick={handleDeleteData}>Delete Data</button>
+        {data && <pre>{JSON.stringify(data, null, 2)}</pre>}
       </Container>
     </Box>
   );

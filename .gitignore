@@ -19,9 +19,9 @@
 # misc
 .DS_Store
 *.pem
-/.env.development
-/.env.production
-/.env.staging
+# /.env.development
+# /.env.production
+# /.env.staging
 
 # debug
 npm-debug.log*
