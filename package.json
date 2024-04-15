@@ -1,0 +1,44 @@
+{
+	"name": "template",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint",
+		"build-and-serve": "npm run build; npm run start",
+		"generate:icons": "./.scripts/generate-icons.sh",
+		"development": "ENV=local env-cmd -f .env.development next",
+		"staging": "ENV=local env-cmd -f .env.staging next",
+		"production": "ENV=local env-cmd -f .env.production next"
+	},
+	"dependencies": {
+		"@emotion/react": "^11.11.3",
+		"@emotion/styled": "^11.11.0",
+		"@mui/icons-material": "^5.15.10",
+		"@mui/material": "^5.15.10",
+		"axios": "^1.6.5",
+		"clsx": "^2.1.0",
+		"cpy-cli": "^5.0.0",
+		"cross-env": "^7.0.3",
+		"env-cmd": "^10.1.0",
+		"js-cookie": "^3.0.5",
+		"lodash": "^4.17.21",
+		"move-cli": "^2.0.0",
+		"next": "14.1.0",
+		"nextjs-progressbar": "^0.0.16",
+		"react": "^18.2.0",
+		"react-dom": "^18",
+		"react-redux": "^8.1.3",
+		"redux": "^4.2.1",
+		"redux-devtools-extension": "^2.13.9",
+		"redux-persist": "^6.0.0",
+		"redux-thunk": "^2.4.2",
+		"swiper": "^11.0.6"
+	},
+	"devDependencies": {
+		"eslint": "^8",
+		"eslint-config-next": "14.1.0"
+	}
+}
