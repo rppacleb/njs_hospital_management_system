@@ -1,104 +1,43 @@
 export const useCutomStyles = {
   //BUTTONS ...
-  styleBtnPrimary: {
-    background: "#FAC50F",
+  BTNPrimary: {
+    background: "#1915AC",
     background:
-      "linear-gradient(180deg, rgba(250,197,15,1) 19%, rgba(255,231,150,1) 49%, rgba(250,197,15,0.8799894957983193) 75%)",
-    cursor: "pointer",
-    border: "unset",
+      "linear-gradient(90deg, rgba(25,21,172,1) 0%, rgba(41,18,173,1) 49%, rgba(61,15,167,1) 100%)",
+    color: "#fff",
     borderRadius: "0.25rem",
-    fontWeight: "600",
-    padding: "0.75rem 1.5rem",
+    padding: "8px 24px",
+    boxShadow: "none",
     transition: "all 0.3s",
-    ["span"]: {
-      color: "black",
+    "& p": {
+      fontWeight: 500,
+      fontSize: 14,
     },
   },
-  styleBtnSecondary: {
-    border: `1px solid white`,
-    cursor: "pointer",
+  BTNSecondary: {
+    bgcolor: "#fff",
+    color: "#16171A",
     borderRadius: "0.25rem",
-    background: "unset",
-    fontWeight: "600",
+    padding: "8px 24px",
+    boxShadow: "none",
+    transition: "all 0.3s",
     "&:hover": {
-      border: `1px solid #FAC50F`,
-      ["span"]: {
-        color: "#FAC50F !important",
-      },
+      bgcolor: "#fff",
     },
-    ["& span"]: {
+    "& p": {
+      fontWeight: 500,
       transition: "all 0.3s ease",
     },
   },
-  styleBtnText: {
-    pointerEvents: "visible",
-    transition: "0.3s",
-    borderBottom: `1px solid white`,
-    width: "fit-content",
-    cursor: "pointer",
-    "&:hover": {
-      color: "#FAC50F",
-      borderBottom: `1px solid #FAC50F`,
+  INPPrimary: {
+    fontSize: 12,
+    "& label.Mui-focused": {
+      border: "1px solid transparent",
     },
-  },
-
-  //TYPOGRAPHY ...
-  styleTypography: {
-    textHeader: {
-      //V2 EK Wala pa
-      color: "white",
-      fontSize: "1.75em",
-      fontWeight: "700",
-      lineHeight: "1.8125em",
-      letterSpacing: "0.01em",
-    },
-    textHeaderSub: {
-      //V2 EK Desktop Body Copy Bold
-      color: "white",
-      fontSize: "1.125em",
-      fontWeight: "700",
-      lineHeight: "1.5625em",
-      letterSpacing: "0.02em",
-    },
-    textHeaderSub2: {
-      //V2 EK Mobile Button Text
-      color: "white",
-      fontSize: "1em",
-      fontWeight: "700",
-      lineHeight: "1.1875em",
-      letterSpacing: "0.01em",
-    },
-    textParagraph: {
-      //V2 EK Mobile Body Copy
-      color: "white",
-      fontSize: "0.875em",
-      fontWeight: "400",
-      lineHeight: "1.25em",
-      letterSpacing: "0.02em",
-    },
-  },
-
-  //IMG FILL COVER
-  sxImageCover: {
-    priority: true,
-    height: 1000,
-    width: 1000,
-    style: {
-      objectFit: "cover",
-      objectPosition: "0 50%",
-      width: "100%",
-      height: "100%",
-    },
-  },
-  sxImageFill: {
-    priority: true,
-    height: 1000,
-    width: 1000,
-    style: {
-      objectFit: "fill",
-      objectPosition: "50% 50%",
-      width: "100%",
-      height: "100%",
+    "& .MuiOutlinedInput-root": {
+      bgcolor: "#fff",
+      height: 45,
+      borderRadius: 2,
     },
   },
 };

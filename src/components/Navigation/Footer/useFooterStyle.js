@@ -8,8 +8,8 @@ const useFooterStyle = () => {
   return {
     mainContainer: {
       padding: "4rem 0",
-      color: theme.palette.primary.dark,
-      backgroundColor: theme.palette.background.primary,
+      color: theme.palette.primary.light,
+      backgroundColor: theme.palette.complementary.dark2,
       ...FLEXBOX.allCenter,
     },
   };

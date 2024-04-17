@@ -9,3 +9,8 @@ export const COOKIES = {
   LOCALE: "NEXT_LOCALE",
   CURRENCY: "currency",
 };
+
+export const __TBL = {
+  USERS: "tbl_users",
+  HOSPITALS: "tbl_hospitals",
+};

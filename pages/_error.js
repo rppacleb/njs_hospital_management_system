@@ -1,4 +1,4 @@
-import Error from "@src/modules/Error";
+import Error from "@src/modules/error";
 
 // name the page according to its purpose
 const ErrorPage = () => <Error />;

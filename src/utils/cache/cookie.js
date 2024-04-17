@@ -10,7 +10,7 @@ export default class COOKIE {
     };
   }
 
-  set(name = this.name, value, customAttr) {
+  set(name = this.name, value, customAttr = {}) {
     jscookie.set(name, value, { ...this.attributes, ...customAttr });
 
     return {

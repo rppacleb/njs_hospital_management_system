@@ -1,38 +1,43 @@
 import { styled } from "@mui/material/styles";
-import { Button, useTheme } from "@mui/material";
-
-import React from "react";
+import { Button as MUIButton, useTheme } from "@mui/material";
 import { Typography } from "../../DataDisplay";
 
-const PrimaryButton = ({
+const Button = ({
   label,
-  variant,
-  style = {},
+  variant = "contained",
+  theme,
+  sx = {},
   onClick = () => {},
   startIcon,
   endIcon,
+  ...props
 }) => {
   const {
-    useCutomStyles: { styleBtnPrimary, styleBtnSecondary },
+    useCutomStyles: { BTNPrimary, BTNSecondary },
   } = useTheme();
 
-  const ColorButton = styled(Button)((param) => {
-    // const { variant } = param; @DESC: dont remove this, ill get back to this -Jehu
-    let styling = variant === "contained" ? styleBtnPrimary : styleBtnSecondary;
-    styling = { ...styling, ...style };
-    return styling;
-  });
+  const theming = () => {
+    let theming =
+      theme === "primary"
+        ? BTNPrimary
+        : theme === "secondary"
+        ? BTNSecondary
+        : {};
+    return { ...theming, ...sx };
+  };
 
   return (
-    <ColorButton
+    <MUIButton
+      sx={{ ...theming() }}
+      {...props}
       variant={variant}
       onClick={onClick}
       startIcon={startIcon}
       endIcon={endIcon}
     >
-      <Typography text={label} tagType="textHeaderSub2" />
-    </ColorButton>
+      <Typography text={label} />
+    </MUIButton>
   );
 };
 
-export default PrimaryButton;
+export default Button;

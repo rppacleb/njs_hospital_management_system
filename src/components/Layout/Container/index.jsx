@@ -37,14 +37,14 @@ const Container = ({
   return (
     <>
       {fullWidth ? (
-        <Box sx={sx.container} component={component}>
+        <Box sx={sx?.container} component={component}>
           <ContainerElement
-            classes={sx.content}
+            classes={sx?.content}
             maxWidth={fullContent ? "100%" : maxContent}
           />
         </Box>
       ) : (
-        <ContainerElement classes={sx.container} maxWidth={maxWidth} />
+        <ContainerElement classes={sx?.container} maxWidth={maxWidth} />
       )}
     </>
   );

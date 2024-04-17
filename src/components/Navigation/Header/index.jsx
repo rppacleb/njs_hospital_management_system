@@ -3,6 +3,7 @@ import { AppBar } from "@mui/material";
 import { useRouter } from "next/router";
 import useHeaderStyle from "./useHeaderStyle";
 import { Container } from "@src/components/Layout";
+import { Typography } from "@src/components/DataDisplay";
 
 const Header = () => {
   const router = useRouter();
@@ -21,7 +22,13 @@ const Header = () => {
 
   return (
     <AppBar position="fixed" sx={style.mainContainer}>
-      <Container sx={style.widthControl}>Header Content Here</Container>
+      <Container sx={style.widthControl}>
+        <Typography
+          text="S"
+          variant="div"
+          sx={{ fontSize: 24, fontWeight: 900 }}
+        />
+      </Container>
     </AppBar>
   );
 };

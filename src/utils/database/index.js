@@ -1,7 +1,9 @@
+import { __TBL } from "../enum";
+
 // utils/db.js
 const DB_NAME = "hms_app_db";
 const DB_VERSION = 1;
-const STORE_NAME = ["tbl_users", "tbl_hospitals"];
+const STORE_NAME = [__TBL.USERS, __TBL.HOSPITALS];
 
 export default class DB {
   constructor() {
@@ -26,7 +28,11 @@ export default class DB {
           const db = event.target.result;
           STORE_NAME.map((tbl) => {
             if (!db.objectStoreNames.contains(tbl)) {
-              db.createObjectStore(tbl, { key: "id", autoIncrement: true });
+              if (tbl === "tbl_users") {
+                db.createObjectStore(tbl, { keyPath: "email", unique: true });
+              } else {
+                db.createObjectStore(tbl, { keyPath: "id" });
+              }
             }
           });
         };
@@ -34,6 +40,38 @@ export default class DB {
     };
 
     this.idb();
+  }
+
+  __admin() {
+    return new Promise((resolve, reject) => {
+      this.idb().then((db) => {
+        const transaction = db.transaction("tbl_users", "readwrite");
+        const store = transaction.objectStore("tbl_users");
+        const getRequest = store.get("super@admin.com");
+
+        getRequest.onsuccess = (event) => {
+          const existingData = event.target.result;
+
+          if (!existingData) {
+            const putRequest = store.add({
+              fullname: "John Doe",
+              email: "super@admin.com",
+              password: "admin-@1234",
+            });
+
+            putRequest.onsuccess = (event) => resolve(event.target.result);
+
+            putRequest.onerror = (event) =>
+              reject("Error updating data: " + event.target.error);
+          } else {
+            reject("Record not found");
+          }
+        };
+
+        getRequest.onerror = (event) =>
+          reject("Error getting data: " + event.target.error);
+      });
+    });
   }
 
   create(__TBL, data) {

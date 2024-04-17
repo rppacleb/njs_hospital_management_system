@@ -5,58 +5,29 @@ const Theme = ({ children }) => {
   const pageTheme = createTheme({
     palette: {
       background: {
-        primary: "#FAC50F",
-        white: "white",
-        black: "black",
-        blacklight: "#0D0D0D",
-        blacktransp: "#262626",
+        default: "#1C1D20",
+        primary: "#1C1D20",
       },
       primary: {
-        main: "#FAC50F",
-        dark: "black",
-        light: "#FAC50F",
+        main: "#28292C",
+        light: "#edeae6",
       },
       secondary: {
-        main: "#FAC50F",
-        dark: "black",
-        light: "#FAC50F",
+        main: "#1915AF",
+        light: "#424548",
       },
       complementary: {
-        main: "#FAC50F",
-        dark: "black",
-        light: "#FAC50F",
+        dark1: "#1915AF",
+        dark2: "#121316",
+        dark3: "#191A1D",
+        dar4: "#1D1D1F",
+        green1: "#43a047",
+        cream1: "#CAC3BC",
       },
-      colors: {
-        primary: "#FAC50F",
-        red: "#860303",
-        white: "white",
-        black: "black",
-        blacklight: "#0D0D0D",
-        gray: "#7D7D7D",
-        graylight: "#303030",
-        textdark: "#D0D0D0",
-      },
-      gradient: {
-        primary:
-          "linear-gradient(180deg, rgba(250,197,15,1) 19%, rgba(255,231,150,1) 49%, rgba(250,197,15,0.8799894957983193) 75%)",
-        black:
-          "linear-gradient(180deg, rgba(38,38,38,1) 19%, rgba(18,18,18,1) 75%)",
-        blackTransparent:
-          "linear-gradient(180deg, rgba(0, 0, 0, 0), rgb(0, 0, 0))",
-      },
-      backShadow: {
-        darkShadow:
-          "0 1px 1px hsl(0deg 0% 0% / 0.075),0 2px 2px hsl(0deg 0% 0% / 0.075),0 4px 4px hsl(0deg 0% 0% / 0.075),0 8px 8px hsl(0deg 0% 0% / 0.075),0 16px 16px hsl(0deg 0% 0% / 0.075)",
-        lightShadow: "",
-        lightOrDarkRim:
-          "inset 0 0 0.5px 1px hsla(0, 0%, 100%, 0.1),0 0 0 1px hsla(230, 13%, 9%, 0.075),0 0.3px 0.4px hsla(230, 13%, 9%, 0.02),0 0.9px 1.5px hsla(230, 13%, 9%, 0.045),0 3.5px 6px hsla(230, 13%, 9%, 0.09)",
-        textShadow: "-2px -1px 3px rgba(250, 197, 15, 0.52)",
-      },
+      gradient: {},
+      backShadow: {},
     },
-    transitions: {
-      max: "all 1s cubic-bezier(.25,.8,.25,1)",
-      min: "all 0.3s",
-    },
+    transitions: {},
     breakpoints: {
       values: {
         xxs: 0, // MOBILE_0
@@ -70,11 +41,11 @@ const Theme = ({ children }) => {
       },
     },
     typography: {
-      color: "rgba(255, 255, 255, 1)",
+      color: "#fff",
       button: {
         textTransform: "none",
       },
-      // fontFamily: ["-apple-system", '"Inter"'],
+      fontFamily: ["-apple-system", '"Inter"'],
     },
     useCutomStyles,
   });
