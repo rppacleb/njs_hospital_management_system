@@ -1,3 +1,14 @@
+## TECHNOLOGIES
+
+This web app is using:
+
+- [React.js](https://react.dev/)
+- [Next.js](https://nextjs.org/docs)
+- [Material UI](https://mui.com/material-ui/)
+- [REDUX THUNK](https://redux.js.org/usage/configuring-your-store)
+- [IndexedDB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API)
+- [JS Cookie](https://www.npmjs.com/package/js-cookie)
+
 ## LET'S GET STARTED
 
 1. Install Packages
@@ -6,13 +17,7 @@
 npm install
 ```
 
-2. Check ./styles/icons if not empty. If empty, run:
-
-```bash
-npm run generate:icons
-```
-
-3. run the development server:
+2. run the development server:
 
 ```bash
 # LOCAL ENV
@@ -25,14 +30,4 @@ npm run staging
 npm run production
 ```
 
-Please configure env accordingly. You can find the file to
-edit in ./.docs/.envs/.env.environmet_name
-
-## CONFIGURATIONS
-
-The app is using:
-
-- [Next.js](https://nextjs.org/docs)
-- [Material UI](https://mui.com/material-ui/)
-- [REDUX THUNK](https://redux.js.org/usage/configuring-your-store)
-- [API REQUEST](https://axios-http.com/docs/intro)
+Please configure env accordingly.
