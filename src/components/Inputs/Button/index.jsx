@@ -3,6 +3,7 @@ import { Button as MUIButton, useTheme } from "@mui/material";
 import { Typography } from "../../DataDisplay";
 
 const Button = ({
+  children,
   label,
   variant = "contained",
   theme,
@@ -35,7 +36,7 @@ const Button = ({
       startIcon={startIcon}
       endIcon={endIcon}
     >
-      <Typography text={label} />
+      {children}
     </MUIButton>
   );
 };

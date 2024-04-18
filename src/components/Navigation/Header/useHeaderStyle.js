@@ -16,7 +16,7 @@ const useHeaderStyle = (scrolled) => {
       boxShadow: scrolled ? theme.palette.backShadow.lightOrDarkRim : "unset",
       padding: "1.5rem 0",
       width: "100%",
-      height: 72,
+      height: 48,
       color: theme.palette.primary.light,
       left: 0,
       top: "-0.0625rem",
@@ -24,9 +24,6 @@ const useHeaderStyle = (scrolled) => {
       [isTab]: {
         padding: "0.75rem 0",
       },
-    },
-    widthControl: {
-      ...FLEXBOX.rowCenterBetween,
     },
   };
 };

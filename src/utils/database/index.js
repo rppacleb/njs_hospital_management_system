@@ -31,7 +31,10 @@ export default class DB {
               if (tbl === "tbl_users") {
                 db.createObjectStore(tbl, { keyPath: "email", unique: true });
               } else {
-                db.createObjectStore(tbl, { keyPath: "id" });
+                db.createObjectStore(tbl, {
+                  keyPath: "id",
+                  autoIncrement: true,
+                });
               }
             }
           });
@@ -56,7 +59,7 @@ export default class DB {
             const putRequest = store.add({
               fullname: "John Doe",
               email: "super@admin.com",
-              password: "admin-@1234",
+              password: "admin@-1234",
             });
 
             putRequest.onsuccess = (event) => resolve(event.target.result);
@@ -74,12 +77,12 @@ export default class DB {
     });
   }
 
-  create(__TBL, data) {
+  create(__TBL, data, method = "add") {
     return new Promise((resolve, reject) => {
       this.idb().then((db) => {
         const transaction = db.transaction(__TBL, "readwrite");
         const store = transaction.objectStore(__TBL);
-        const request = store.add(data);
+        const request = store[method](data);
 
         request.onsuccess = (event) => {
           resolve(event.target.result);
@@ -92,12 +95,17 @@ export default class DB {
     });
   }
 
-  read(__TBL, id) {
+  read(__TBL, method = "get", id = "") {
     return new Promise((resolve, reject) => {
       this.idb().then((db) => {
         const transaction = db.transaction(__TBL, "readonly");
         const store = transaction.objectStore(__TBL);
-        const request = store.get(id);
+        let request;
+        if (method === "all") {
+          request = store.getAll();
+        } else {
+          request = store[method](id);
+        }
 
         request.onsuccess = (event) => {
           resolve(event.target.result);
@@ -110,7 +118,7 @@ export default class DB {
     });
   }
 
-  update(__TBL, id, newData) {
+  update(__TBL, id, newData, method = "put") {
     return new Promise((resolve, reject) => {
       this.idb().then((db) => {
         const transaction = db.transaction(__TBL, "readwrite");
@@ -125,7 +133,7 @@ export default class DB {
           if (existingData) {
             // Update the existing record with the new data
             const updatedData = { ...existingData, ...newData };
-            const putRequest = store.put(updatedData);
+            const putRequest = store[method](updatedData);
 
             putRequest.onsuccess = (event) => {
               resolve(event.target.result);
@@ -146,12 +154,12 @@ export default class DB {
     });
   }
 
-  delete(__TBL, id) {
+  delete(__TBL, id, method = "delete") {
     return new Promise((resolve, reject) => {
       this.idb().then((db) => {
         const transaction = db.transaction(__TBL, "readwrite");
         const store = transaction.objectStore(__TBL);
-        const request = store.delete(id);
+        const request = store[method](id);
 
         request.onsuccess = (event) => {
           resolve();

@@ -1,25 +1,10 @@
-const initialState = {
-  navMenus: [],
-  navButtons: [],
-  isLoading: false,
-  settings: {},
-};
+const initialState = {};
 
 const reducers = (state = initialState, action) => {
   const actionHandlers = {
-    GET_LAYOUT: () =>
-      Object.assign({}, state, {
-        isLoading: true,
-      }),
-    GET_LAYOUT_SUCCESS: () =>
-      Object.assign({}, state, {
-        ...action.payload,
-      }),
-    GET_LAYOUT_FAILED: () =>
-      Object.assign({}, state, {
-        errors: true,
-        isLoading: false,
-      }),
+    SET_STATE: () => ({
+      ...state,
+    }),
   };
 
   const actionHandler = actionHandlers[action.type];

@@ -23,7 +23,7 @@ export default class COOKIE {
   }
 
   remove(name = this.name) {
-    jscookie.set(name, { ...this.attributes });
+    jscookie.remove(name, { ...this.attributes });
 
     return {
       msg: "success",

@@ -5,10 +5,11 @@ import {
 } from "@mui/material";
 import { FastField, getIn } from "formik";
 import { MailOutline as IMailOutline } from "@mui/icons-material";
+import { isNull } from "@src/utils/common";
 
 const BaseField = ({
   sx = {},
-  adornment = { position: "start", Render: IMailOutline },
+  adornment = null,
   helperText,
   form: { isSubmitting, touched, errors },
   field,
@@ -34,13 +35,17 @@ const BaseField = ({
       {...props}
       {...field}
       disabled={isSubmitting}
-      InputProps={{
-        [`${adornment.position}Adornment`]: (
-          <InputAdornment position={adornment.position}>
-            <adornment.Render />
-          </InputAdornment>
-        ),
-      }}
+      InputProps={
+        !isNull(adornment)
+          ? {
+              [`${adornment.position}Adornment`]: (
+                <InputAdornment position={adornment.position}>
+                  <adornment.Render />
+                </InputAdornment>
+              ),
+            }
+          : {}
+      }
     />
   );
 };

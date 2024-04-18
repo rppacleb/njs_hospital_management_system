@@ -32,7 +32,7 @@ const Login = () => {
   });
 
   const submitHandler = async (values) => {
-    const account = await __LOCALDB.read(__TBL.USERS, values.email);
+    const account = await __LOCALDB.read(__TBL.USERS, "get", values.email);
     if (isUndefined(account))
       return setVerificationMsg({ stat: false, msg: "Account does not exist" });
     if (account.password !== values.password)
@@ -41,7 +41,17 @@ const Login = () => {
         msg: "Account credentials mismatched",
       });
     cookie.set("hms_app_session", JSON.stringify(account));
-    router.push("/");
+    router.push("/auth/welcome");
+  };
+
+  const responseHandler = async (values) => {
+    const account = {
+      fullname: values?.profileObj?.name,
+      email: values?.profileObj?.email,
+    };
+
+    cookie.set("hms_app_session", JSON.stringify(account));
+    router.push("/auth/welcome");
   };
 
   return (
@@ -69,7 +79,7 @@ const Login = () => {
       <Box
         height="100%"
         width="60%"
-        bgcolor={palette.complementary.dark1}
+        bgcolor={palette.complementary.dark3}
         color={palette.primary.light}
         display="flex"
         flexDirection="column"
@@ -92,7 +102,7 @@ const Login = () => {
               variant="h1"
               sx={{ fontSize: 24, fontWeight: 500, mb: 2 }}
             />
-            <ThirdParty />
+            <ThirdParty responseHandler={responseHandler} />
           </Box>
           <Box className="separator">or</Box>
           <Box>
@@ -137,7 +147,6 @@ const Login = () => {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        label="Login with Satori Credentials"
                         theme="primary"
                         sx={{
                           fontSize: 14,
@@ -145,7 +154,9 @@ const Login = () => {
                           px: "32px",
                           width: "100%",
                         }}
-                      />
+                      >
+                        Login with Satori Credentials
+                      </Button>
                     </Box>
                   </Stack>
                 </Form>

@@ -1,10 +1,8 @@
-import Main from "@src/modules/main";
+import Welcome from "@src/modules/auth/welcome";
 
 // name the page according to its purpose
-const MainPage = ({ __LOCALSESSION }) => (
-  <Main __LOCALSESSION={__LOCALSESSION} />
-);
-export default MainPage;
+const WelcomePage = ({ data }) => <Welcome />;
+export default WelcomePage;
 
 export async function getServerSideProps() {
   let data = {};

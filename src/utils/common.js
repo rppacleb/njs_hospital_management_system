@@ -1,6 +1,8 @@
-import { rqx } from "@src/api";
 import { LINK_ACTIONS } from "./enum";
-import { isValidString } from "./string";
+
+export function isValidString(param) {
+  return typeof param === "string" && param !== "";
+}
 
 export const isNull = (value) => {
   return value === null;
@@ -35,20 +37,4 @@ export const redirect = (action, slug) => {
   if (action === NEW_TAB) return window.open(slug, action);
   if (action === SAME_TAB) return window.open(slug, action);
   return false;
-};
-
-// Server Side Request ( API Request with try catch )
-export const SSR = async (action, service, payload) => {
-  try {
-    const result = await rqx[action](service, payload);
-    return {
-      msg: "success",
-      result,
-    };
-  } catch (err) {
-    return {
-      msg: "err",
-      err,
-    };
-  }
 };
