@@ -40,7 +40,7 @@ const Welcome = () => {
       <Box
         height="100%"
         width="40%"
-        bgcolor={palette.complementary.dark2}
+        sx={{ background: palette.gradient.darkTogreen }}
       ></Box>
       <Box
         height="100%"

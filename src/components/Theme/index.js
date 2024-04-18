@@ -30,6 +30,10 @@ const Theme = ({ children }) => {
         cream2: "#a8a6a3",
       },
       gradient: {
+        darkToBlue:
+          "linear-gradient(54deg, rgba(18,19,22,1) 0%, rgba(19,24,29,1) 45%, rgba(25,46,58,1) 81%, rgba(29,64,81,1) 100%, rgba(31,73,93,1) 100%)",
+        darkTogreen:
+          "linear-gradient(54deg, rgba(18,19,22,1) 0%, rgba(22,30,26,1) 48%, rgba(37,73,41,1) 100%)",
         darkToLightBlue:
           "linear-gradient(90deg, rgba(39,38,40,1) 0%, rgba(32,37,42,1) 39%, rgba(12,42,57,1) 77%, rgba(31,73,93,1) 93%)",
       },
